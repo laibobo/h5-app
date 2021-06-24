@@ -1,5 +1,8 @@
 import { createApp } from 'vue'
-import router from './router';
+import App from './App.vue'
+import router from './router'
 
-const vm = createApp()
-vm.use(router).mount('#app')
+const app = createApp(App)
+
+//https://github.com/vuejs/rfcs/blob/master/active-rfcs/0009-global-api-change.md#provide%E2%80%93inject
+app.use(router).mount('#app')

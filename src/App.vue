@@ -1,7 +1,7 @@
 <template>
-    <div id="app">
+    <div>
         <div>HI app</div>
-        <router-link />
+        <router-view />
     </div>
 </template>
 <script>
@@ -12,11 +12,11 @@ export default defineComponent({
     }
 })
 </script>
-<style lang="scss" scoped>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+<style lang="scss">
+body{
+    font-size: 56px;
+}
+#app{
+    background: chartreuse;
 }
 </style>
