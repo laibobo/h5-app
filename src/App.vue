@@ -18,5 +18,6 @@ body{
 }
 #app{
     background: chartreuse;
+    display: flex;
 }
 </style>

@@ -5,11 +5,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 
 const isDev = process.env.NODE_ENV === 'development'
-
-const config = {
+const config = {    
     entry: path.join(__dirname, 'src/main.js'),
     output:{
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         path: path.join(__dirname, 'dist')
     },
     module: {
@@ -20,13 +19,14 @@ const config = {
         {
             test: /\.css$/,
             use: [
-                'vue-style-loader', //https://github.com/vuejs/vue-style-loader
-                // {
-                //     loader: MiniCssExtractPlugin.loader,
-                //     options: {
-                //         esModule:false
-                //     }
-                // },
+                //https://github.com/vuejs/vue-style-loader
+                isDev?'vue-style-loader': 
+                {
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        esModule:false
+                    }
+                },
                 'css-loader',
                 'postcss-loader',
             ]
@@ -34,13 +34,13 @@ const config = {
         {
             test: /\.scss$/,
             use: [
-                'vue-style-loader',
-                // {
-                //     loader: MiniCssExtractPlugin.loader,
-                //     options: {
-                //         esModule:false
-                //     }
-                // },
+                isDev? 'vue-style-loader':
+                {
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        esModule:false
+                    }
+                },
                 'css-loader',
                 'postcss-loader',
                 'sass-loader'
@@ -60,10 +60,7 @@ const config = {
             options: {
                 limit: 8192,
                 name(){
-                    if (process.env.NODE_ENV === 'development') {
-                        return '[path][name].[ext]'
-                    }        
-                    return '[contenthash].[ext]'
+                    return isDev? '[path][name].[ext]' : '[contenthash].[ext]'
                 },
                 outputPath: 'images'
             }
@@ -87,9 +84,11 @@ const config = {
         }
     }
 }
-config.devServer = {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 2021
+if(isDev){
+    config.devServer = {
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 2021
+    }
 }
 module.exports = config
