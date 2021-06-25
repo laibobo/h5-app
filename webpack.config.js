@@ -1,10 +1,32 @@
 const path = require('path')
+const fs = require('fs')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
-
 const isDev = process.env.NODE_ENV === 'development'
+
+const getEnv = function(file){
+    const fileUrl = path.join(__dirname, file)
+    const fileContent = fs.readFileSync(fileUrl, { encoding: 'utf8' })
+    const data = fileContent.replace(/\r/g, ',').replace(/\n/g, '').split(',')
+    let result = {}
+    data.forEach((item)=>{
+        if(item){
+            const arr = item.split('=')
+            if(arr.length == 2){
+                const key = trim(arr[0])
+                const value = trim(arr[1])
+                result[key] = value
+            }
+        }
+    })
+    return result
+}
+const trim = function(value){
+    return value.replace(/^\s+|\s+$/g, '')
+}
+
 const config = {    
     entry: path.join(__dirname, 'src/main.js'),
     output:{
@@ -75,7 +97,12 @@ const config = {
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css'
         }),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new webpack.DefinePlugin({
+            "process.env": {
+                ...getEnv(`.env.${process.env.NODE_ENV}`)
+            }
+        })
     ],
     resolve:{
         alias:{
