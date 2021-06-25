@@ -27,7 +27,9 @@ const trim = function(value){
     return value.replace(/^\s+|\s+$/g, '')
 }
 
-const config = {    
+const config = {  
+    //https://webpack.docschina.org/configuration/target/
+    target: 'web',
     entry: path.join(__dirname, 'src/main.js'),
     output:{
         filename: '[name].bundle.js',
@@ -89,7 +91,6 @@ const config = {
         }]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: 'hi h5',
             template: path.join(__dirname, 'index.html')
@@ -115,7 +116,14 @@ if(isDev){
     config.devServer = {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
-        port: 2021
+        port: 2021,
+        host: '0.0.0.0',
+        hot: true,
+        overlay: {
+            warnings: false,
+            error: true
+        }
     }
+    config.plugins.push(new webpack.HotModuleReplacementPlugin)
 }
 module.exports = config

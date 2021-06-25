@@ -15,10 +15,10 @@ export default defineComponent({
 </script>
 <style lang="scss">
 body{
-    font-size: 56px;
+    font-size: 12px;
 }
 #app{
-    background: chartreuse;
+    background: blue;
     display: flex;
 }
 </style>
