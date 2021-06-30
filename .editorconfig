@@ -1,0 +1,26 @@
+root = true
+
+[*]
+# 结尾换行符，可选"lf"、"cr"、"crlf"
+end_of_line = lf
+# 在文件结尾插入新行
+insert_final_newline = true
+ 
+[*.js]
+charset = utf-8
+quote_type = single
+
+[*.{js,vue}]
+# 缩进风格，可选"space"、"tab"
+indent_style = space
+# 缩进的空格数
+indent_size = 2
+# 删除一行中的前后空格
+trim_trailing_whitespace = true
+# 运算符两端都有空格
+spaces_around_operators = true
+# 表示括号和括号之间应有空格：无空格，仅在括号内，仅在括号外或在括号的两侧 （none，inside，outside，both）
+spaces_around_brackets = both
+
+[*.{html,less,css,json}]
+quote_type = double

@@ -7,17 +7,17 @@
 <script>
 import { defineComponent } from 'vue'
 export default defineComponent({
-    setup(){
-        console.log('Hi app')
-    }
+  setup() {
+    console.log('Hi app')
+  }
 })
 </script>
 <style lang="scss">
 body{
-    font-size: 56px;
+  font-size: 56px;
 }
 #app{
-    background: chartreuse;
-    display: flex;
+  background: chartreuse;
+  display: flex;
 }
 </style>

@@ -3,9 +3,13 @@
 </template>
 
 <script>
-
+import { defineComponent } from 'vue'
+export default defineComponent({
+  setup() {
+    const l = 123
+    console.log(l)
+  }
+})
 </script>
-
 <style>
-
 </style>
