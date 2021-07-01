@@ -34,6 +34,10 @@ const MiniCssConfig = {
 }
 const isDev = process.env.NODE_ENV === 'development'
 const config = {
+  /**
+   * https://webpack.docschina.org/configuration/target/
+  */
+  target: 'web',
   entry: path.join(__dirname, 'src/main.js'),
   output: {
     filename: '[name].bundle.js',
@@ -92,11 +96,16 @@ const config = {
       loader: 'url-loader',
       options: {
         limit: 8192,
-        name() {
+        name(){
           return isDev ? '[path][name].[ext]' : '[contenthash].[ext]'
         },
         outputPath: 'images'
       }
+    },
+    {
+      test: /\.(woff|woff2|eot|ttf|otf|svg)$/i,
+      include: path.resolve(__dirname, 'src/assets/fonts'),
+      type: 'asset/resource'
     }]
   },
   plugins: [

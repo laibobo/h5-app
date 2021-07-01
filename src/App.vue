@@ -23,6 +23,18 @@ body {
   width: 200px;
   color: #fff;
   background: chartreuse;
-  opacity: 0.1;
+}
+
+@font-face {
+  font-family: "webfont";
+  font-display: swap;
+  src: url('assets/fonts/webfont.otf'); /* IE9 */
+}
+
+.web-font {
+  font-family: webfont;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 </style>

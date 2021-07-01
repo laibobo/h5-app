@@ -8,6 +8,7 @@ module.exports = {
     'at-rule-no-vendor-prefix': true,
     'selector-no-vendor-prefix': true,
     'property-no-vendor-prefix': true,
-    'value-no-vendor-prefix': true
+    'value-no-vendor-prefix': true,
+    'font-family-no-missing-generic-family-keyword': false
   }
 }
