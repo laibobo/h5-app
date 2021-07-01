@@ -11,7 +11,7 @@ const app = createApp(App)
 app.use(router).mount('#app')
 const dd = () => {
   console.log('asdas')
-  const a = function() {
+  const a = function(){
     console.log(1111)
   }
   a()

@@ -5,7 +5,7 @@
 <script>
 import { defineComponent } from 'vue'
 export default defineComponent({
-  setup() {
+  setup(){
     const l = 123
     console.log(l)
   }
@@ -13,7 +13,7 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 div {
-  font-size: 32px;
   position: relative;
+  font-size: 32px;
 }
 </style>

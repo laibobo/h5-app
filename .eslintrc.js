@@ -11,6 +11,8 @@ module.exports = {
    * https://eslint.vuejs.org/rules/
   */
   rules: {
-    'space-before-function-paren': ['error', 'never']
+    'space-before-function-paren': ['error', 'never'],
+    'keyword-spacing': ['error', { overrides: { if: { after: false }, for: { after: false }, while: { after: false } } }],
+    'space-before-blocks': ['error', 'never']
   }
 }

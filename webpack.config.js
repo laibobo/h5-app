@@ -6,6 +6,26 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 
+const getEnv = function(file){
+  const fileUrl = path.join(__dirname, file)
+  const fileContent = fs.readFileSync(fileUrl, { encoding: 'utf8' })
+  const data = fileContent.replace(/\r/g, ',').replace(/\n/g, '').split(',')
+  const result = {}
+  data.forEach((item) => {
+    if(item){
+      const arr = item.split('=')
+      if(arr.length === 2){
+        const key = trim(arr[0])
+        const value = trim(arr[1])
+        result[key] = value
+      }
+    }
+  })
+  return result
+}
+const trim = function(value){
+  return value.replace(/^\s+|\s+$/g, '')
+}
 const MiniCssConfig = {
   loader: MiniCssExtractPlugin.loader,
   options: {
@@ -95,6 +115,11 @@ const config = {
       cache: true,
       emitErrors: true,
       failOnError: false
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        ...getEnv(`.env.${process.env.NODE_ENV}`)
+      }
     })
   ],
   resolve: {
@@ -104,7 +129,7 @@ const config = {
   }
 }
 
-if (isDev) {
+if(isDev){
   config.devServer = {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
