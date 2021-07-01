@@ -1,5 +1,5 @@
 <template>
-    <div>vue3 1111111111</div>
+  <div>vue3 1111111111</div>
 </template>
 
 <script>
@@ -11,5 +11,9 @@ export default defineComponent({
   }
 })
 </script>
-<style>
+<style lang="scss" scoped>
+div {
+  font-size: 32px;
+  position: relative;
+}
 </style>

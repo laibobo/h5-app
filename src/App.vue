@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <div>HI app</div>
-        <router-view />
-    </div>
+  <div>
+    <div>HI app</div>
+    <router-view />
+  </div>
 </template>
 <script>
 import { defineComponent } from 'vue'
@@ -13,11 +13,16 @@ export default defineComponent({
 })
 </script>
 <style lang="scss">
-body{
+body {
   font-size: 56px;
 }
-#app{
-  background: chartreuse;
+
+#app {
+  position: absolute;
   display: flex;
+  width: 200px;
+  color: #fff;
+  background: chartreuse;
+  opacity: 0.1;
 }
 </style>

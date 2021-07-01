@@ -1,0 +1,9 @@
+div {
+  position: absolute;
+  box-sizing: border-box;
+  width: 20px;
+  height: 30px;
+  min-height: 20px;
+  font-size: 12px;
+  opacity: 0.3;
+}

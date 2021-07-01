@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+const StyleLintPlugin = require('stylelint-webpack-plugin')
 
 const MiniCssConfig = {
   loader: MiniCssExtractPlugin.loader,
@@ -87,11 +88,18 @@ const config = {
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css'
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new StyleLintPlugin({
+      files: ['**/*.{html,vue,css,scss}'],
+      fix: true,
+      cache: true,
+      emitErrors: true,
+      failOnError: false
+    })
   ],
   resolve: {
     alias: {
-      '@': './src'
+      '@': path.join(__dirname, 'src')
     }
   }
 }
