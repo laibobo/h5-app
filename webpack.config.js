@@ -104,8 +104,16 @@ const config = {
     },
     {
       test: /\.(woff|woff2|eot|ttf|otf|svg)$/i,
-      include: path.resolve(__dirname, 'src/assets/fonts'),
+      include: path.join(__dirname, 'src/assets/fonts'),
       type: 'asset/resource'
+    },
+    {
+      test: /\.svg$/,
+      include: path.join(__dirname, 'src/assets/icons'),
+      loader: 'svg-sprite-loader',
+      options: {
+        symbolId: 'icon-[name]'
+      }
     }]
   },
   plugins: [

@@ -1,22 +1,14 @@
 <template>
-  <div>
-    <div>HI app</div>
-    <router-view />
-  </div>
+  <router-view />
 </template>
 <script>
 import { defineComponent } from 'vue'
 export default defineComponent({
   setup(){
-    console.log('Hi app')
   }
 })
 </script>
 <style lang="scss">
-body {
-  font-size: 56px;
-}
-
 #app {
   position: absolute;
   display: flex;
@@ -28,7 +20,7 @@ body {
 @font-face {
   font-family: "webfont";
   font-display: swap;
-  src: url('assets/fonts/webfont.otf'); /* IE9 */
+  src: url('assets/fonts/webfont.otf');
 }
 
 .web-font {
