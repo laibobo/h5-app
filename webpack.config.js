@@ -41,7 +41,32 @@ const config = {
   entry: path.join(__dirname, 'src/main.js'),
   output: {
     filename: '[name].bundle.js',
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, 'dist'),
+    clean: true
+  },
+  optimization: {
+    /**
+     * 避免额外的优化步骤
+    */
+    removeAvailableModules: false,
+    removeEmptyChunks: false,
+    /**
+     * 将公共的依赖模块提取到已有的入口 chunk
+    */
+    splitChunks: {
+      cacheGroups: {
+        /**
+         * 将第三方库(library) 提取到单独的 vendor chunk 文件中
+        */
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    },
+    moduleIds: 'deterministic',
+    runtimeChunk: 'single'
   },
   module: {
     rules: [{
@@ -92,15 +117,8 @@ const config = {
       ]
     },
     {
-      test: /\.(png|jpe?g|gif)$/i,
-      loader: 'url-loader',
-      options: {
-        limit: 8192,
-        name(){
-          return isDev ? '[path][name].[ext]' : '[contenthash].[ext]'
-        },
-        outputPath: 'images'
-      }
+      test: /\.(png|jpe?g|gif|webp)$/i,
+      type: 'asset'
     },
     {
       test: /\.(woff|woff2|eot|ttf|otf|svg)$/i,
@@ -140,9 +158,15 @@ const config = {
     })
   ],
   resolve: {
+    modules: ['node_modules', path.resolve(__dirname, 'src')],
+    extensions: ['.js', '.vue', '.json', '.css', 'scss'],
     alias: {
       '@': path.join(__dirname, 'src')
     }
+  },
+  externalsType: 'script',
+  externals: {
+    lodash: ['https://cdn.jsdelivr.net/npm/lodash@4.17.19/lodash.min.js', '_']
   }
 }
 

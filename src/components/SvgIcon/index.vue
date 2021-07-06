@@ -21,7 +21,7 @@ export default defineComponent({
   }
 })
 </script>
-<style scoped>
+<style lang="css" scoped>
 .svg-icon {
   width: 1em;
   height: 1em;

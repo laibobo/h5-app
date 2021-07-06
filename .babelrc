@@ -1,9 +1,11 @@
 {
-    "presets": [[
-        "@babel/preset-env",
-        {
-            "corejs": 2,
-            "useBuilylns": "usage"
-        }
-    ]]
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "corejs": 2,
+                "useBuiltIns": "usage"
+            }
+        ]
+    ]
 }
