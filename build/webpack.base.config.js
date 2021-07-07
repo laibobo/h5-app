@@ -28,13 +28,12 @@ const trim = function(value){
   return value.replace(/^\s+|\s+$/g, '')
 }
 
-const config = {
+module.exports = {
   target: 'web',
+  mode: 'none',
   entry: path.join(__dirname, '../src/main.js'),
   output: {
-    filename: 'bundle.js',
-    path: path.join(__dirname, '../dist'),
-    publicPath: './'
+    path: path.join(__dirname, '../dist')
   },
   module: {
     rules: [
@@ -115,4 +114,3 @@ const config = {
     lodash: ['https://cdn.jsdelivr.net/npm/lodash@4.17.19/lodash.min.js', '_']
   }
 }
-module.exports = config

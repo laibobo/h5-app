@@ -3,10 +3,13 @@ const WebpackBaseConfig = require('./webpack.base.config')
 const WebpackMerge = require('webpack-merge')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const path = require('path')
+
 module.exports = WebpackMerge.merge(WebpackBaseConfig, {
   devtool: 'eval-cheap-source-map',
+  output: {
+    filename: 'bundle.js'
+  },
   module: {
-    pathinfo: false,
     rules: [
       {
         enforce: 'pre',
@@ -25,7 +28,7 @@ module.exports = WebpackMerge.merge(WebpackBaseConfig, {
     contentBase: path.join(__dirname, '../dist'),
     compress: true,
     port: 2021,
-    host: '0.0.0.0'
+    open: true
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
