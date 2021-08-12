@@ -4,7 +4,7 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
-
+// webpack 5 运行于 Node.js v10.13.0+ 的版本。
 const devMode = process.env.NODE_ENV === 'development'
 
 const getEnv = function(file){
@@ -110,6 +110,7 @@ module.exports = {
     }
   },
   externalsType: 'script',
+  // 防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖
   externals: {
     lodash: ['https://cdn.jsdelivr.net/npm/lodash@4.17.19/lodash.min.js', '_']
   }
