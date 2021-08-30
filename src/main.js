@@ -6,9 +6,12 @@ import SvgIcon from '@/components/SvgIcon/index.vue'
 import { sayhi } from '@/pubilc/utils'
 import { Button, Icon, AddressList } from 'vant'
 
+import VConsole from 'vconsole'
+const vConsole = new VConsole()
+
+console.log('process.env', process.env)
 sayhi()
 const app = createApp(App)
-
 app.use(Button).use(Icon).use(AddressList)
 app.component('SvgIcon', SvgIcon)
 /**

@@ -15,8 +15,8 @@ module.exports = WebpackMerge.merge(WebpackBaseConfig, {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name]-[contenthash:6].css',
-      chunkFilename: '[id].[contenthash:6].css'
+      filename: 'css/[name]-[contenthash:6].css',
+      chunkFilename: 'css/[id].[contenthash:6].css'
     }),
     // Webpack 包分析器。交互式可缩放树图可视化 webpack 输出文件的大小
     new BundleAnalyzerPlugin()
@@ -30,11 +30,11 @@ module.exports = WebpackMerge.merge(WebpackBaseConfig, {
           reuseExistingChunk: true,
           chunks: 'all',
           minChunks: 2,
-          priority: 10
+          priority: 0
         },
         vantUI: {
           name: 'chunk-vantUi',
-          priority: 20,
+          priority: 1,
           // 如果当前 chunk 包含已从主 bundle 中拆分出的模块，则它将被重用，而不是生成新的模块
           reuseExistingChunk: true,
           chunks: 'all',

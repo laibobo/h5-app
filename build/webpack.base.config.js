@@ -33,7 +33,8 @@ module.exports = {
   mode: 'none',
   entry: path.join(__dirname, '../src/main.js'),
   output: {
-    path: path.join(__dirname, '../dist')
+    path: path.join(__dirname, '../dist'),
+    clean: true
   },
   module: {
     rules: [
@@ -70,6 +71,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|webp)$/i,
+        include: path.join(__dirname, '../src/assets/images'),
         type: 'asset'
       },
       {
@@ -112,6 +114,7 @@ module.exports = {
   externalsType: 'script',
   // 防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖
   externals: {
-    lodash: ['https://cdn.jsdelivr.net/npm/lodash@4.17.19/lodash.min.js', '_']
+    lodash: ['https://cdn.jsdelivr.net/npm/lodash@4.17.19/lodash.min.js', '_'],
+    vconsole: ['https://unpkg.com/vconsole/dist/vconsole.min.js', 'VConsole']
   }
 }
