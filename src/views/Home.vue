@@ -13,22 +13,44 @@
       </a>
     </nav>
   </div>
+  <div class="element-position" ref="elementPositionRef">
+    <div>x: {{ elementPosition.value.x }}</div>
+    <div>y: {{ elementPosition.value.y }}</div>
+    <div>offsetX: {{ elementPosition.value.offsetX }}</div>
+    <div>offsetY: {{ elementPosition.value.offsetY }}</div>
+  </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, ref, reactive } from 'vue'
 import _ from 'lodash'
+import useElementPosition from '../hooks/useElementPosition.js'
 export default defineComponent({
   setup(){
     const data = _.head([1, 2, 3])
     console.log('data', data)
-    console.log('lodash')
+    const elementPositionRef = ref(null)
+    const elementPosition = reactive({})
+
+    elementPosition.value = useElementPosition(elementPositionRef, 'click')
     return {
+      elementPositionRef,
+      elementPosition
     }
   }
 })
 </script>
 <style lang="scss" scoped>
+.element-position {
+  position: fixed;
+  bottom: 100px;
+  left: 50px;
+  width: 200px;
+  height: 200px;
+  color: red;
+  border: 1px solid red;
+}
+
 .ln {
   width: 500px;
   height: 400px;

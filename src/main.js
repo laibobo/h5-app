@@ -7,6 +7,7 @@ import { sayhi } from '@/pubilc/utils'
 import { Button, Icon, AddressList } from 'vant'
 
 import VConsole from 'vconsole'
+// eslint-disable-next-line no-unused-vars
 const vConsole = new VConsole()
 
 console.log('process.env', process.env)
