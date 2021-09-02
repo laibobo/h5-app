@@ -7,6 +7,13 @@
     <van-nav-bar safe-area-inset-top />
     <van-number-keyboard safe-area-inset-bottom />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <% if(process.env.NODE_ENV === 'development') { %>
+    <script src="https://unpkg.com/vconsole/dist/vconsole.min.js"></script>
+    <script>
+        // eslint-disable-next-line no-unused-vars
+        const vConsole = new window.VConsole()
+    </script>
+    <% } %>
 </head>
 <body>
     <div id="app"></div>

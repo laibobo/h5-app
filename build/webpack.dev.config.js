@@ -28,7 +28,8 @@ module.exports = WebpackMerge.merge(WebpackBaseConfig, {
     contentBase: path.join(__dirname, '../dist'),
     compress: true,
     port: 2021,
-    open: true
+    open: true,
+    historyApiFallback: true
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

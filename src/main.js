@@ -6,15 +6,12 @@ import SvgIcon from '@/components/SvgIcon/index.vue'
 import { sayhi } from '@/pubilc/utils'
 import { Button, Icon, AddressList } from 'vant'
 
-import VConsole from 'vconsole'
-// eslint-disable-next-line no-unused-vars
-const vConsole = new VConsole()
-
 console.log('process.env', process.env)
 sayhi()
 const app = createApp(App)
 app.use(Button).use(Icon).use(AddressList)
 app.component('SvgIcon', SvgIcon)
+
 /**
  * https://github.com/vuejs/rfcs/blob/master/active-rfcs/0009-global-api-change.md#provide%E2%80%93inject
 */

@@ -7,7 +7,8 @@ module.exports = {
     browser: true
   },
   parserOptions: {
-    ecmaVersion: 10
+    ecmaVersion: 10,
+    sourceType: 'module'
   },
   /**
    * https://cloud.tencent.com/developer/doc/1268
@@ -16,6 +17,7 @@ module.exports = {
   rules: {
     'space-before-function-paren': ['error', 'never'],
     'keyword-spacing': ['error', { overrides: { if: { after: false }, for: { after: false }, while: { after: false } } }],
-    'space-before-blocks': ['error', 'never']
+    'space-before-blocks': ['error', 'never'],
+    presets: 0
   }
 }

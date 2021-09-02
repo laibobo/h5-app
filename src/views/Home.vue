@@ -4,6 +4,7 @@
     <div class="ln"></div>
     <van-button type="primary" size="large">大号按钮1</van-button>
     <van-icon name="chat-o" />
+    <van-icon name="chat-o" />
     <nav class="nav-list">
       <a class="nav-item" href="">
         <svg-icon iconName="love" />我的
