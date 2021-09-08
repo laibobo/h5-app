@@ -1,15 +1,14 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import 'vant/lib/index.css'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import { sayhi } from '@/pubilc/utils'
-import { Button, Icon, AddressList } from 'vant'
+import installVant from '@/plugins/vant.js'
 
 console.log('process.env', process.env)
 sayhi()
 const app = createApp(App)
-app.use(Button).use(Icon).use(AddressList)
+installVant(app)
 app.component('SvgIcon', SvgIcon)
 
 /**
