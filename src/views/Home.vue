@@ -1,42 +1,23 @@
 <template>
-  <div>
-    <img :src="require('@/assets/images/weather.png')" />
-    <div class="ln"></div>
-    <van-button type="primary" size="large">大号按钮1</van-button>
-    <van-icon name="chat-o" />
-    <van-icon name="chat-o" />
-    <nav class="nav-list">
-      <a class="nav-item" href="">
-        <svg-icon iconName="love" />我的
-      </a>
-      <a class="nav-item primary" href="">
-        <svg-icon iconName="crown" />首页
-      </a>
-    </nav>
-  </div>
-  <div class="element-position" ref="elementPositionRef">
-    <div>x: {{ elementPosition.value.x }}</div>
-    <div>y: {{ elementPosition.value.y }}</div>
-    <div>offsetX: {{ elementPosition.value.offsetX }}</div>
-    <div>offsetY: {{ elementPosition.value.offsetY }}</div>
-  </div>
+  <van-grid square>
+    <van-grid-item v-for="(item, index) in navList" :key="index" icon="photo-o" :text="item.name" />
+  </van-grid>
 </template>
 
 <script>
-import { defineComponent, ref, reactive } from 'vue'
-import _ from 'lodash'
-import useElementPosition from '../hooks/useElementPosition.js'
+import { defineComponent, ref } from 'vue'
 export default defineComponent({
   setup(){
-    const data = _.head([1, 2, 3])
-    console.log('data', data)
-    const elementPositionRef = ref(null)
-    const elementPosition = reactive({})
-
-    elementPosition.value = useElementPosition(elementPositionRef, 'click')
+    const navList = ref([{
+      name: '哈哈'
+    }, {
+      name: '哈哈2'
+    }])
+    setTimeout(() => {
+      navList.value[0].name = '哈哈哈'
+    }, 3000)
     return {
-      elementPositionRef,
-      elementPosition
+      navList
     }
   }
 })

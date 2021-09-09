@@ -1,20 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import Home from '@/views/Home.vue'
+import Login from '@/views/Login/index.vue'
+import NotFound from '@/views/NotFound/index.vue'
 
-/**
- * { path: '/:pathMatch(.*)', component: NotFoundComponent }
-*/
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
       path: '/',
       name: 'Home',
-      component: () => import('@/views/Home.vue')
+      component: Home
     },
     {
       path: '/login',
       name: 'Login',
-      component: () => import('@/views/login/index.vue')
+      component: Login
+    },
+    {
+      path: '/:pathMatch(.*)',
+      name: 'NotFound',
+      component: NotFound
     }
   ]
 })

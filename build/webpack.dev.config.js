@@ -29,7 +29,16 @@ module.exports = WebpackMerge.merge(WebpackBaseConfig, {
     compress: true,
     port: 2021,
     open: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      '/admin/api': {
+        target: 'http://192.168.0.225',
+        pathRewrite: {
+          '^/admin/api': '/api'
+        },
+        changeOrigin: true
+      }
+    }
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

@@ -6,10 +6,10 @@ const service = axios.create({
 })
 
 service.defaults.headers.post['Content-Type'] = 'application/json'
+
 service.interceptors.request.use((config) => {
   return config
 })
-// 拦截响应response，并做一些错误处理
 service.interceptors.response.use((response) => {
   return response
 }, (error) => {
@@ -47,7 +47,7 @@ const request = ({
   if(responseType){
     headers.responseType = responseType
   }
-  const promise = new Promise(
+  return new Promise(
     (resolve, reject) => {
       service[method](url + queryString, params, {
         headers,
@@ -58,7 +58,6 @@ const request = ({
         reject(error)
       })
     })
-  return promise
 }
 
 export default request

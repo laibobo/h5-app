@@ -14,11 +14,7 @@ export default defineComponent({
 </script>
 <style lang="scss">
 #app {
-  position: absolute;
-  display: flex;
-  width: 200px;
-  color: #fff;
-  background: chartreuse;
+  font-size: 12px;
 }
 
 @font-face {
