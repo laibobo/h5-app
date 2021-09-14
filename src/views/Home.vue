@@ -1,6 +1,6 @@
 <template>
   <van-grid square>
-    <van-grid-item v-for="(item, index) in navList" :key="index" icon="photo-o" :text="item.name" />
+    <van-grid-item v-for="(item, index) in navList" :key="index" :icon="item.icon" :text="item.name" :to="item.url" />
   </van-grid>
 </template>
 
@@ -9,13 +9,14 @@ import { defineComponent, ref } from 'vue'
 export default defineComponent({
   setup(){
     const navList = ref([{
-      name: '哈哈'
+      name: '介绍',
+      url: '/introduce',
+      icon: 'envelop-o'
     }, {
-      name: '哈哈2'
+      name: '文章',
+      url: '/article',
+      icon: 'records'
     }])
-    setTimeout(() => {
-      navList.value[0].name = '哈哈哈'
-    }, 3000)
     return {
       navList
     }
