@@ -4,10 +4,13 @@ import router from './router'
 import store from './store'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import installVant from '@/plugins/vant.js'
+import installDirective from '@/directive'
+import '@/router/permission.js'
 import '../mock/index'
 
 const app = createApp(App)
 installVant(app)
+installDirective(app)
 app.component('SvgIcon', SvgIcon)
 
 /**

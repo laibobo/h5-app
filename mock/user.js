@@ -22,8 +22,8 @@ const info = {
           nickname: '兰斯'
         },
         permissionIdents: [
-          { name: '文章', code: 'Article', routePath: '/article', filePath: '@/views/Article/index.vue', btns: ['add', 'edit'] },
-          { name: '介绍', code: 'Introduce', routePath: '/introduce', filePath: '@/views/Introduce/index.vue' }
+          { routeName: 'Article', btns: ['add', 'edit'] },
+          { routeName: 'Introduce' }
         ]
       }
     }

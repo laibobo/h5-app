@@ -6,10 +6,6 @@ module.exports = {
     node: true,
     browser: true
   },
-  parserOptions: {
-    ecmaVersion: 10,
-    sourceType: 'module'
-  },
   /**
    * https://cloud.tencent.com/developer/doc/1268
    * https://eslint.vuejs.org/rules/

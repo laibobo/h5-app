@@ -1,25 +1,65 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '@/views/Home.vue'
-import Login from '@/views/Login/index.vue'
-import NotFound from '@/views/NotFound/index.vue'
+
+export const constRoutes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: () => import('@/views/Home.vue')
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/Login/index.vue'),
+    meta: {
+      title: '登录'
+    }
+  }
+]
+
+export const asyncRoutes = [
+  {
+    path: '/article',
+    name: 'Article',
+    component: () => import('@/views/Article/index.vue'),
+    meta: {
+      title: '文章'
+    }
+  },
+  {
+    path: '/introduce',
+    name: 'Introduce',
+    component: () => import('@/views/Introduce/index.vue'),
+    meta: {
+      title: '介绍'
+    }
+  }
+]
+
+export const resetRouter = () => {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher
+}
 
 const router = createRouter({
   history: createWebHistory(),
+  scrollBehavior: (to, from, savedPosition) => {
+    let result = {}
+    if(savedPosition){
+      result = savedPosition
+    } else {
+      result = { x: 0, y: 0 }
+    }
+    return result
+  },
   routes: [
-    {
-      path: '/',
-      name: 'Home',
-      component: Home
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      component: Login
-    },
+    ...constRoutes,
     {
       path: '/:pathMatch(.*)',
       name: 'NotFound',
-      component: NotFound
+      component: () => import('@/views/NotFound/index.vue'),
+      meta: {
+        title: '404'
+      }
     }
   ]
 })
