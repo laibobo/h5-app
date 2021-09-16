@@ -17,6 +17,8 @@ export default createStore({
   actions: {
   },
   getters: {
+    permissionIdents: state => state.user.permissionIdents,
+    permissionBtns: state => state.user.permissionBtns
   },
   modules
 })

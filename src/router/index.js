@@ -32,6 +32,14 @@ export const asyncRoutes = [
     meta: {
       title: '介绍'
     }
+  },
+  {
+    path: '/:pathMatch(.*)',
+    name: 'NotFound',
+    component: () => import('@/views/NotFound/index.vue'),
+    meta: {
+      title: '404'
+    }
   }
 ]
 
@@ -51,17 +59,7 @@ const router = createRouter({
     }
     return result
   },
-  routes: [
-    ...constRoutes,
-    {
-      path: '/:pathMatch(.*)',
-      name: 'NotFound',
-      component: () => import('@/views/NotFound/index.vue'),
-      meta: {
-        title: '404'
-      }
-    }
-  ]
+  routes: constRoutes
 })
 
 export default router

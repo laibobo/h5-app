@@ -6,3 +6,10 @@ export const login = (params) => {
     params
   })
 }
+export const getUserInfo = (query) => {
+  return request({
+    url: '/user/info',
+    method: 'get',
+    query
+  })
+}

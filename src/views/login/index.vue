@@ -20,19 +20,21 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
-import { login } from '@/api/index.js'
 import { Toast } from 'vant'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   setup(){
     const username = ref('')
+    const router = useRouter()
+    const store = useStore()
     const onSubmit = () => {
-      login({ username: username.value }).then(({ code, msg }) => {
+      store.dispatch('userLogin', username.value).then(({ code, msg }) => {
         if(code === 0){
           Toast(msg)
         } else {
-          useRouter().router.push('/')
+          router.push('/')
         }
       })
     }

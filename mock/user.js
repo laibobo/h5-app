@@ -15,18 +15,15 @@ const info = {
     if(!['token_user1', 'token_user'].includes(token)){
       return resultFail('登录失败，无法获取用户详细信息。', 50008)
     }
-    return {
-      code: 20000,
-      data: {
-        user: {
-          nickname: '兰斯'
-        },
-        permissionIdents: [
-          { routeName: 'Article', btns: ['add', 'edit'] },
-          { routeName: 'Introduce' }
-        ]
-      }
-    }
+    return resultSuccess({
+      user: {
+        nickname: '兰斯'
+      },
+      permissionIdents: [
+        { routeName: 'Article', btns: ['add', 'edit'] },
+        { routeName: 'Introduce' }
+      ]
+    })
   }
 }
 const login = {

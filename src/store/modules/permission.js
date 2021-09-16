@@ -1,4 +1,4 @@
-import { asyncRoutes, constantRoutes } from '@/router'
+import { asyncRoutes, constRoutes } from '@/router'
 
 /**
  * 确定当前用户是否具有权限
@@ -8,7 +8,7 @@ import { asyncRoutes, constantRoutes } from '@/router'
  */
 function hasPermission(permissionIdents, route){
   if(route.name){
-    return permissionIdents.some(item => item.routeName === route.name)
+    return permissionIdents.some(item => item.routeName === route.name || item.routeName === 'NotFound')
   }
   return true
 }
@@ -39,17 +39,17 @@ const state = {
 }
 
 const mutations = {
-  SET_routes: (state, routes) => {
+  SET_Routes: (state, routes) => {
     state.addRoutes = routes
-    state.routes = [...routes, ...constantRoutes]
+    state.routes = routes.concat(constRoutes)
   }
 }
 
 const actions = {
-  generateRoutes({ commit }, { permissionIdents }){
+  generateRoutes({ commit }, permissionIdents){
     return new Promise(resolve => {
-      const accessedRoutes = filterAsyncRoutes(asyncRoutes, JSON.parse(JSON.stringify(permissionIdents)))
-      commit('SET_routes', accessedRoutes)
+      const accessedRoutes = filterAsyncRoutes(asyncRoutes, permissionIdents)
+      commit('SET_Routes', accessedRoutes)
       resolve(accessedRoutes)
     })
   }

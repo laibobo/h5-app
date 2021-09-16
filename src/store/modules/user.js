@@ -1,10 +1,10 @@
-import { login } from '@/api'
+import { login, getUserInfo } from '@/api'
 import { getToken, saveToken, removeToken } from '@/pubilc/auth.js'
 
 export default {
   state: {
-    token: getToken(),
-    permission: [],
+    permissionIdents: [],
+    permissionBtns: [],
     user: {}
   },
   mutations: {
@@ -12,11 +12,14 @@ export default {
       state.user = payload
     },
     SET_Permission(state, payload){
-      state.permission = payload
+      state.permissionIdents = payload
+    },
+    SET_PermissionBtns: (state, btns) => {
+      state.permissionBtns = btns
     }
   },
   actions: {
-    login({ commit }, username){
+    userLogin({ commit }, username){
       return new Promise((resolve, reject) => {
         login({ username }).then(result => {
           const { code, data } = result
@@ -33,7 +36,23 @@ export default {
       commit('SET_UserInfo', {})
       commit('SET_Permission', [])
       removeToken()
-    }
+    },
+    getUserInfo({ commit, state }){
+      return new Promise((resolve, reject) => {
+        getUserInfo({ token: getToken() }).then(response => {
+          if(response.code !== 1){
+            resolve('验证失败，请重新登录')
+          }
+          const { data } = response
+          const { user, permissionIdents } = data
 
+          commit('SET_Permission', permissionIdents)
+          commit('SET_UserInfo', user)
+          resolve(data)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    }
   }
 }
