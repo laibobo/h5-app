@@ -1,7 +1,10 @@
 <template>
+  <div>
+    home
   <van-grid square>
     <van-grid-item v-for="(item, index) in navList" :key="index" :icon="item.icon" :text="item.name" :to="item.url" />
   </van-grid>
+  </div>
 </template>
 
 <script>

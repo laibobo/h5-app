@@ -34,7 +34,16 @@ module.exports = {
   entry: path.join(__dirname, '../src/main.js'),
   output: {
     path: path.join(__dirname, '../dist'),
-    clean: true
+    clean: true,
+    environment: {
+      arrowFunction: false,
+      bigIntLiteral: false,
+      const: false,
+      destructuring: false,
+      dynamicImport: false,
+      forOf: false,
+      module: false
+    }
   },
   module: {
     rules: [
