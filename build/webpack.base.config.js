@@ -35,6 +35,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, '../dist'),
     clean: true,
+    // https://webpack.js.org/configuration/output/#outputenvironment
     environment: {
       arrowFunction: false,
       bigIntLiteral: false,
@@ -123,7 +124,6 @@ module.exports = {
   externalsType: 'script',
   // 防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖
   externals: {
-    lodash: ['https://cdn.jsdelivr.net/npm/lodash@4.17.19/lodash.min.js', '_'],
-    vconsole: ['https://unpkg.com/vconsole/dist/vconsole.min.js', 'VConsole']
+    lodash: ['https://cdn.jsdelivr.net/npm/lodash@4.17.19/lodash.min.js', '_']
   }
 }
